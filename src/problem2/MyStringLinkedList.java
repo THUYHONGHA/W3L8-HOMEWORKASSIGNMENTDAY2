@@ -23,7 +23,7 @@ public class MyStringLinkedList {
 		if (header == null)
 			header = new Node(null, item, null);
 		else {
-			Node last = header.next;
+			Node last = header;
 			while (last.next != null) {
 				last = last.next;
 			}
@@ -70,6 +70,10 @@ public class MyStringLinkedList {
 
 	// implement the code
 	public Object getLast() {
+		if (header == null) {
+			System.out.println("LinkedList is empty.");
+			return null;
+		}
 		Node temp = header;
 		while (temp.next != null) {
 			temp = temp.next;
@@ -103,7 +107,7 @@ public class MyStringLinkedList {
 		Node temp = header;
 		String min = temp.value;
 		do {
-			if (min.compareToIgnoreCase(temp.next.value) > 1) {
+			if (min.compareToIgnoreCase(temp.next.value) > 0) {
 				min = temp.next.value;
 			}
 			temp = temp.next;
@@ -128,9 +132,10 @@ public class MyStringLinkedList {
 
 	// implement the code
 	public void print(Node n) {
-		if(n==null) return;
+		if (n == null)
+			return;
 		System.out.println(n.value);
-		print(n.next);				
+		print(n.next);
 	}
 
 	public void preAddNode(Node n, String value) {
@@ -259,9 +264,13 @@ public class MyStringLinkedList {
 		System.out.println("mySL size: " + mySL.size());
 		System.out.println(mySL);
 		mySL.printReverse();
-		mySL.addFront("Carrot Cake");		
-		System.out.println(mySL);
-		mySL.printReverse();
+		mySL.addLast("Test1 Cake");
+		mySL.addLast("Test2 Cake");
+		mySL.addLast("Test3 Cake");
+		System.out.println("AddLast Test: " + mySL);
+		mySL.addFront("Carrot Cake");
+
+		// mySL.printReverse();
 		mySL.addFront("Blueberry Muffin");
 		System.out.println(mySL);
 		mySL.printReverse();
